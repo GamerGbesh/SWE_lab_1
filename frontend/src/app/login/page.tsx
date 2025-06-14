@@ -41,7 +41,7 @@ export default function Page() {
 
                 <button type={"submit"} className={"bg-blue-900 p-1 rounded-2xl px-6 cursor-pointer"}
                 onClick={onclick}>Login</button>
-                <p>Don&#39;t have an account? <Link href={"/signup"} className={"text-blue-700"}><span>Signup</span></Link></p>
+                <p>Don&#39;t have an account? <Link href={"/register"} className={"text-blue-700"}><span>Signup</span></Link></p>
 
             </div>
         </div>
