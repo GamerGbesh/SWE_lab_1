@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 import DashboardClient from "./DashboardClient";
 
 async function fetchDashboardData() {
