@@ -5,16 +5,16 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 interface Course {
-    Course: string;
-    Description: string;
+    course: string;
+    description: string;
 }
 interface Lecturer {
-    Name: string;
-    Phone: string;
+    name: string;
+    phone: string;
 }
 interface Student {
-    Name: string;
-    Phone: string;
+    name: string;
+    phone: string;
 }
 interface Category {
     courses: Course[];
@@ -26,19 +26,19 @@ export default function DashboardClient({ data }: { data: Category }) {
     const { user } = useAuthContext();
     const router = useRouter();
 
-    useEffect(() => {
-        if (!user) router.push("/login");
-    }, [user, router]);
+    // useEffect(() => {
+    //     if (!user) router.push("/login");
+    // }, [user, router]);
 
-    if (!user) return null;
+    // if (!user) return null;
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold mb-8 text-center">Dashboard</h1>
 
-            <TableSection title="Courses" headers={["Course", "Description"]} rows={data.courses.map(c => [c.Course, c.Description])} />
-            <TableSection title="Lecturers" headers={["Name", "Phone"]} rows={data.lecturers.map(l => [l.Name, l.Phone])} />
-            <TableSection title="Students" headers={["Name", "Phone"]} rows={data.students.map(s => [s.Name, s.Phone])} />
+            <TableSection title="Courses" headers={["Course", "Description"]} rows={data.courses.map(c => [c.course, c.description])} />
+            <TableSection title="Lecturers" headers={["Name", "Phone"]} rows={data.lecturers.map(l => [l.name, l.phone])} />
+            <TableSection title="Students" headers={["Name", "Phone"]} rows={data.students.map(s => [s.name, s.phone])} />
         </div>
     );
 }
