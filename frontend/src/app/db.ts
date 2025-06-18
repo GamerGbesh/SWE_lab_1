@@ -1,4 +1,3 @@
-// db.ts
 import { Pool } from 'pg';
 import { configDotenv } from 'dotenv';
 

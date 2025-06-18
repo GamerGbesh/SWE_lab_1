@@ -1,9 +1,5 @@
 "use client";
 
-import { useAuthContext } from "@/app/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-
 interface Course {
     course: string;
     description: string;
@@ -23,14 +19,7 @@ interface Category {
 }
 
 export default function DashboardClient({ data }: { data: Category }) {
-    const { user } = useAuthContext();
-    const router = useRouter();
 
-    // useEffect(() => {
-    //     if (!user) router.push("/login");
-    // }, [user, router]);
-
-    // if (!user) return null;
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
