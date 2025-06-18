@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import {useActionState, useEffect} from "react"
+import {useActionState, useEffect, useState} from "react"
 import loginUser from "@/app/login/actions";
 import {redirect} from "next/navigation";
 
@@ -8,6 +8,7 @@ const initialMessage = {success: false, message: ""}
 
 export default function Login() {
     const [state, formState] = useActionState(loginUser, initialMessage);
+    const [inputType, setInputType] = useState("password");
 
     useEffect(() => {
         if (state.success) {
@@ -19,10 +20,17 @@ export default function Login() {
         <div className="max-w-md mx-auto p-4 bg-gray-200 shadow-2xl rounded-lg relative top-30">
             <form action={formState} className="grid place-items-center h-full gap-4">
                 <label htmlFor="username">Username</label>
-                <input type={"text"} placeholder={"Username"} id={"username"} name={"username"}/>
+                <input type={"text"} placeholder={"Username"} id={"username"} name={"username"} className={"border rounded-2xl px-4 border-blue-300"}/>
 
                 <label htmlFor="password">Password</label>
-                <input type="password" placeholder={"Password"} id={"password"} name={"password"}/>
+                <input type={inputType} placeholder={"Password"} id={"password"} name={"password"} className={"border rounded-2xl px-4 border-blue-300"}/>
+                {inputType === "password" ? <button onClick={
+                    () => setInputType("text")}
+                    type={"button"}>
+                    Show password</button>
+                    : <button onClick={() => setInputType("password")}
+                              type={"button"}
+                    >Hide password</button>}
 
                 <button type={"submit"} className={"bg-blue-900 p-1 rounded-2xl px-6 cursor-pointer"}>Login</button>
                 <p>Don&#39;t have an account? <Link href={"/register"} className={"text-blue-700"}><span>Signup</span></Link></p>

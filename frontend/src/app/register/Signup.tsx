@@ -1,13 +1,15 @@
 "use client"
 import Link from "next/link";
 import createUser from "@/app/register/actions";
-import {useActionState, useEffect} from "react";
+import {useActionState, useEffect, useState} from "react";
 import {redirect} from "next/navigation";
 
 const initialMessage = {success: false, message: ""};
 
 export default function Signup() {
     const [state, formState] = useActionState(createUser, initialMessage);
+    const [inputType, setInputType] = useState("password");
+
 
     useEffect(() => {
         if (state.success) {
@@ -30,12 +32,18 @@ export default function Signup() {
                 />
 
                 <label htmlFor="password">Password</label>
-                <input type="password" placeholder={"Password"}
+                <input type={inputType} placeholder={"Password"}
                        id={"password"} name={"password"}
                 />
-
+                {inputType === "password" ? <button onClick={
+                        () => setInputType("text")}
+                                                    type={"button"}>
+                        Show password</button>
+                    : <button onClick={() => setInputType("password")}
+                              type={"button"}
+                    >Hide password</button>}
                 <label htmlFor="password2">Confirm Password</label>
-                <input type="password" placeholder={"Confirm Password"} id={"password2"} name={"password2"}
+                <input type={inputType} placeholder={"Confirm Password"} id={"password2"} name={"password2"}
                 />
 
                 <button type={"submit"} className={"bg-blue-900 p-1 rounded-2xl px-6  cursor-pointer"}
