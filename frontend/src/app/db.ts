@@ -1,9 +1,4 @@
 import { Pool } from 'pg';
-import { configDotenv } from 'dotenv';
-
-configDotenv();
-
-let pool: Pool;
 
 declare global {
     var _pgPool: Pool | undefined;
@@ -19,6 +14,6 @@ if (!global._pgPool) {
     });
 }
 
-pool = global._pgPool;
+const pool = global._pgPool;
 
 export { pool };

@@ -4,7 +4,12 @@ import { pool } from "../db"
 import bcrypt from "bcrypt"
 import { cookies } from 'next/headers';
 
-export default async function loginUser(prevState: any, formData: FormData) {
+interface state{
+    success: boolean,
+    message: string,
+}
+
+export default async function loginUser(prevState: state, formData: FormData) {
     const username = formData.get("username");
     const password = formData.get("password");
 
