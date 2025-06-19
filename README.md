@@ -1,4 +1,6 @@
 # Lab Report: PostgreSQL Database Development and Next.js 14 Application
+## Id: 22042860
+## Name: Mensah Philemon Edem Yao
 
 ## Overview
 
@@ -7,7 +9,6 @@ This lab consisted of two main tasks:
 1. Designing and implementing a PostgreSQL relational database to manage various operations for a software system in the Computer Engineering Department.
 2. Developing a Next.js 14 application with user authentication (login, register) and a protected dashboard using Next.js server actions and the `node-postgres` library for backend functionality.
 
----
 
 ## Task 1: PostgreSQL Database Development
 
