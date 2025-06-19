@@ -19,20 +19,36 @@ interface Category {
 }
 
 export default function DashboardClient({ data }: { data: Category }) {
-
-
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8 text-center">Dashboard</h1>
-
-            <TableSection title="Courses" headers={["Course", "Description"]} rows={data.courses.map(c => [c.course, c.description])} />
-            <TableSection title="Lecturers" headers={["Name", "Phone"]} rows={data.lecturers.map(l => [l.name, l.phone])} />
-            <TableSection title="Students" headers={["Name", "Phone"]} rows={data.students.map(s => [s.name, s.phone])} />
-        </div>
+            <div className="max-w-6xl mx-auto">
+                <TableSection
+                    title="Courses"
+                    headers={["Course", "Description"]}
+                    rows={data.courses.map((c) => [c.course, c.description])}
+                />
+                <TableSection
+                    title="Lecturers"
+                    headers={["Name", "Phone"]}
+                    rows={data.lecturers.map((l) => [l.name, l.phone])}
+                />
+                <TableSection
+                    title="Students"
+                    headers={["Name", "Phone"]}
+                    rows={data.students.map((s) => [s.name, s.phone])}
+                />
+            </div>
     );
 }
 
-function TableSection({ title, headers, rows }: { title: string; headers: string[]; rows: string[][] }) {
+function TableSection({
+                          title,
+                          headers,
+                          rows,
+                      }: {
+    title: string;
+    headers: string[];
+    rows: string[][];
+}) {
     return (
         <section className="mb-12">
             <h2 className="text-xl font-semibold mb-4">{title}</h2>
@@ -41,7 +57,10 @@ function TableSection({ title, headers, rows }: { title: string; headers: string
                     <thead className="bg-gray-100">
                     <tr>
                         {headers.map((header, idx) => (
-                            <th key={idx} className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">
+                            <th
+                                key={idx}
+                                className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider"
+                            >
                                 {header}
                             </th>
                         ))}
@@ -52,7 +71,10 @@ function TableSection({ title, headers, rows }: { title: string; headers: string
                         rows.map((row, idx) => (
                             <tr key={idx} className="hover:bg-gray-50 odd:bg-gray-50">
                                 {row.map((cell, index) => (
-                                    <td key={index} className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                    <td
+                                        key={index}
+                                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"
+                                    >
                                         {cell}
                                     </td>
                                 ))}
@@ -60,7 +82,10 @@ function TableSection({ title, headers, rows }: { title: string; headers: string
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={headers.length} className="px-6 py-4 text-center text-gray-400">
+                            <td
+                                colSpan={headers.length}
+                                className="px-6 py-4 text-center text-gray-400"
+                            >
                                 No data available
                             </td>
                         </tr>

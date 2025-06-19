@@ -2,7 +2,6 @@ import DashboardClient from "./DashboardClient";
 import { pool } from "../db"
 import { cookies } from 'next/headers';
 import {redirect} from "next/navigation";
-import logoutUser from "@/app/dashboard/actions";
 
 
 async function fetchDashboardData() {
@@ -42,10 +41,6 @@ export default async function DashboardPage() {
     const data : Data = await fetchDashboardData();
 
     return <>
-        <form action={logoutUser}>
-            <button type={"submit"} className={"bg-blue-600 my-2 p-2 rounded-4xl shadow-2xl hover:bg-blue-800 cursor-pointer"}>Logout</button>
-        </form>
-
         <DashboardClient data={data} />
     </>;
 }

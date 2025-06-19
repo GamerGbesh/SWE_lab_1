@@ -4,11 +4,15 @@ import { pool } from "../db"
 import bcrypt from "bcrypt"
 import { cookies } from 'next/headers';
 
+interface state{
+    success: boolean,
+    message: string,
+}
 
-export default async function createUser(prevState: any, formData: FormData) {
+export default async function createUser(prevState: state, formData: FormData) {
     const username = formData.get("username");
     const email = formData.get("email");
-    const password = formData.get("password");
+    const password = formData.get("password") as string;
     const passwordConfirm = formData.get("password2");
 
     if (!username || !email || !password || !passwordConfirm) {
