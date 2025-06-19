@@ -12,7 +12,7 @@ const initialMessage = { success: false, message: "" };
 
 export default function Login() {
     const [state, formState] = useActionState(loginUser, initialMessage);
-    const [inputType, setInputType] = useState("password");
+    const [inputType, setInputType] = useState<"password" | "text">("password");
 
     useEffect(() => {
         if (state.success) {

@@ -6,12 +6,13 @@ import { cookies } from 'next/headers';
 
 interface state{
     success: boolean,
-    message: string,
+    message?: string,
+    user?: string,
 }
 
 export default async function loginUser(prevState: state, formData: FormData) {
     const username = formData.get("username");
-    const password = formData.get("password");
+    const password = formData.get("password") as string;
 
     if (!username || !password) {
         return {success: false, message: "Username or password is required"};
