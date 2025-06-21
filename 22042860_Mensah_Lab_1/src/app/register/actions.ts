@@ -32,7 +32,7 @@ export default async function createUser(prevState: state, formData: FormData) {
         `INSERT INTO users (username, password_hash, email) VALUES ($1, $2, $3) RETURNING username`, [username, hashed, email],
     )
 
-    const cookieStore = await  cookies()
+    const cookieStore = await cookies()
     cookieStore.set("user", user.rows[0].username)
     return { success: true, message: "Signup successful!" };
 

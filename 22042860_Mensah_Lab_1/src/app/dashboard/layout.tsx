@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <header className="bg-white shadow px-6 py-4 flex justify-between items-center">
                     <h1 className="text-xl font-semibold text-gray-800">Dashboard Overview</h1>
                     <form action={logoutUser}>
-                        <button type={"submit"} className={"bg-blue-600 my-2 p-2 rounded-4xl shadow-2xl hover:bg-blue-800 cursor-pointer"}>Logout</button>
+                        <button type={"submit"} className={"bg-red-200 my-2 p-2 rounded-4xl shadow-2xl hover:bg-red-400 cursor-pointer"}>Logout</button>
                     </form>
                 </header>
 

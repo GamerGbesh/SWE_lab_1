@@ -3,39 +3,53 @@
 interface Course {
     course: string;
     description: string;
+    lecturer: string;
 }
 interface Lecturer {
     name: string;
     phone: string;
+    assistant: string;
 }
 interface Student {
     name: string;
     phone: string;
+    paid: string;
 }
+interface Enrollment {
+    name: string;
+    course: string;
+}
+
 interface Category {
     courses: Course[];
     lecturers: Lecturer[];
     students: Student[];
+    enrollments: Enrollment[];
 }
 
-export default function DashboardClient({ data }: { data: Category }) {
+export default function DashboardClient({ data, amount }: { data: Category, amount: number }) {
+
     return (
             <div className="max-w-6xl mx-auto">
                 <TableSection
                     title="Courses"
-                    headers={["Course", "Description"]}
-                    rows={data.courses.map((c) => [c.course, c.description])}
+                    headers={["Course", "Course Name", "Lecturer"]}
+                    rows={data.courses.map((c) => [c.course, c.description, c.lecturer])}
                 />
                 <TableSection
                     title="Lecturers"
-                    headers={["Name", "Phone"]}
-                    rows={data.lecturers.map((l) => [l.name, l.phone])}
+                    headers={["Name", "Phone", "Assistant"]}
+                    rows={data.lecturers.map((l) => [l.name, l.phone, l.assistant])}
                 />
                 <TableSection
                     title="Students"
-                    headers={["Name", "Phone"]}
-                    rows={data.students.map((s) => [s.name, s.phone])}
+                    headers={["Name", "Phone", "Amount Paid", "Amount Left"]}
+                    rows={data.students.map((s) => [s.name, s.phone, s.paid, String(amount - Number(s.paid)) ])}
                 />
+                <TableSection
+                    title="Enrollments"
+                    headers={["Name", "Course"]}
+                    rows={data.enrollments.map(e => [e.name, e.course])}/>
             </div>
     );
 }
